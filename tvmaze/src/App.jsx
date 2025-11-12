@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import SearchBar from "./components/SearchBar";
 
 export default function App() {
   const [busqueda, setBusqueda] = useState("");
@@ -26,17 +27,11 @@ export default function App() {
   return (
     <div className = "app">
       <h1>Buscador de series</h1>
-
-      <form onSubmit = {handleSubmit}>
-      <input
-        id = "searchInput"
-        type = "text"
-        placeholder = "Escribe una serie..."
-        value = {busqueda}
+      <SearchBar
+        busqueda = {busqueda}
         onChange = {handleChange}
+        onSubmit = {handleSubmit}
       />
-      <button type = "submit">Buscar</button>
-      </form>
 
       <p className = "search-text">Texto de búsqueda: {busqueda}</p>
 
