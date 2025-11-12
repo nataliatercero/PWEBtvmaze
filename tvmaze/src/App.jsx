@@ -70,7 +70,9 @@ export default function App() {
                   <div className = "no-image">Sin imagen</div>
                 )}
                 <h3>{serie.nombre}</h3>
-                <FavouriteButton serie = {serie} onToggle={actualizarFavoritos} />
+                <div onClick = {(e) => e.stopPropagation()}>
+                  <FavouriteButton serie = {serie} onToggle={actualizarFavoritos} />
+                </div>  
               </div>  
             ))}
           </div>

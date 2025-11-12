@@ -16,7 +16,9 @@ export default function SeriesList({ resultados, onToggle, onSelect }) {
                 <div className="no-image">Sin imagen</div>
               )}
               <h3>{serie.nombre}</h3>
-              <FavouriteButton serie = {serie} onToggle = {onToggle} />
+              <div onClick = {(e) => e.stopPropagation()}>
+                <FavouriteButton serie = {serie} onToggle={onToggle} />
+              </div>
             </div>
           ))}
         </div>

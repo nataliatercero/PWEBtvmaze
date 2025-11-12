@@ -9,7 +9,7 @@
   min-height: 100vh;
 }
 
-
+/* TITULO Y FORM  */
 h1 {
   font-size: 2rem;
   font-weight: 600;
@@ -56,6 +56,7 @@ button:hover {
   margin-top: 0.5rem;
 }
 
+/* RESULTADOS */
 .resultados {
   margin-top: 2rem;
   text-align: center;
@@ -66,20 +67,7 @@ button:hover {
   margin-bottom: 1rem;
 }
 
-.resultados ul {
-  list-style: none;
-  padding: 0;
-}
-
-.resultados li {
-  background-color: white;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem auto;
-  width: fit-content;
-  border: 1px solid #ddd;
-}
-
+/* SERIES GRID */
 .series-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -95,6 +83,11 @@ button:hover {
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.serie-card:hover {
+  transform: scale(1.02);
 }
 
 .serie-card img {
@@ -109,12 +102,6 @@ button:hover {
   font-size: 1rem;
   margin: 0.5rem 0;
   color: #222;
-}
-
-.serie-card p {
-  font-size: 0.9rem;
-  color: #555;
-  margin: 0;
 }
 
 .no-image {
@@ -143,21 +130,14 @@ button:hover {
   outline: none;
 }
 
-.favoritos {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.favoritos h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-/* --- MODAL --- */
+/* MODAL */
 .modal-overlay {
   position: fixed;
-  inset: 0; /* simplifica top/left/right/bottom */
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,72 +145,116 @@ button:hover {
 }
 
 .modal-content {
-  background: #fff;
-  border-radius: 14px;
-  padding: 1.2rem 1rem 1.5rem;
-  width: 85%;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 90%;
   max-width: 360px;
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
-  animation: modalFadeIn 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .modal-content img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
   margin-bottom: 1rem;
-  object-fit: cover;
 }
 
 .modal-content h2 {
-  margin: 0.4rem 0 0.3rem;
-  font-size: 1.15rem;
-  color: #222;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
 }
 
 .modal-content p {
-  font-size: 0.9rem;
-  color: #555;
+  color: #444;
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 
-/* Botón de cierre */
+/* BOTÓN DE CIERRE */
 .close-btn {
   position: absolute;
   top: -12px;
   right: -12px;
-  background: #fff;
-  border: 2px solid #bbb;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1.3rem;
-  color: #111;
-  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: #333;
+  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
-  z-index: 1100;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s;
 }
 
 .close-btn:hover {
-  background: #0078ff;
-  color: #fff;
-  border-color: #0078ff;
-  transform: scale(1.05);
+  background-color: #eee;
 }
 
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+/*  MEDIA QUERIES  */
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 900px) {
+  .app {
+    padding: 1.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .serie-card img {
+    height: 220px;
+  }
+
+  .modal-content {
+    max-width: 320px;
+  }
+}
+
+/* Pantallas pequeñas (móviles grandes) */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  #searchInput {
+    width: 200px;
+  }
+
+  .serie-card img {
+    height: 180px;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 300px;
+    padding: 1rem;
+  }
+
+  .close-btn {
+    top: -10px;
+    right: -10px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+  #searchInput {
+    width: 160px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .serie-card {
+    padding: 0.7rem;
   }
 }
