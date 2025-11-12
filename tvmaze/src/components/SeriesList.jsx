@@ -1,3 +1,5 @@
+import FavouriteButton from "./FavouriteButton";
+
 export default function SeriesList({ resultados }) {
   function limpiarResumen(texto) {
     if (!texto) return "Sin descripción disponible";
@@ -20,6 +22,7 @@ export default function SeriesList({ resultados }) {
                 <div className="no-image">Sin imagen</div>
               )}
               <h3>{serie.nombre}</h3>
+              <FavouriteButton serie = {serie} />
               <p>{limpiarResumen(serie.resumen)}</p>
             </div>
           ))}

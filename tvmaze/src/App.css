@@ -128,3 +128,19 @@ button:hover {
   border-radius: 6px;
   font-size: 0.9rem;
 }
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem auto;
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+
+
