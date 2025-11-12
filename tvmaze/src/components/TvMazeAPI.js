@@ -9,7 +9,7 @@ export async function searchSeries(query) {
             return data.map(item => ({
                 id: item.show.id,
                 nombre: item.show.name,
-                image: item.show.image ? item.show.image.medium : null,
+                imagen: item.show.image ? item.show.image.medium : null,
                 resumen: item.show.summary ? item.show.summary : "No hay descripción disponible"
             }))
         })
