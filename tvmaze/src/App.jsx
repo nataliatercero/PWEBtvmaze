@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import SeriesList from "./components/SeriesList";
+import { searchSeries } from "./components/TvMazeAPI";
 
 export default function App() {
   const [busqueda, setBusqueda] = useState("");
@@ -13,16 +14,15 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // para que no recargue la página
-    console.log("Buscando serie:", busqueda);
 
     if (busqueda.trim() === ""){
       setResultados([]);
       return
     }
 
-    setResultados([
-      { id: 1, nombre: `Resultado de prueba para "${busqueda}"`}
-    ])
+    searchSeries(busqueda)
+      .then(data => setResultados(data))
+      .catch(() => setResultados([]));
   }
 
   return (
