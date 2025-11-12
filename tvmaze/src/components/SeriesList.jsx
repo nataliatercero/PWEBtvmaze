@@ -15,7 +15,7 @@ export default function SeriesList({ resultados, onToggle }) {
       ) : (
         <div className="series-grid">
           {resultados.map((serie) => (
-            <div className="serie-card" key={serie.id}>
+            <div className="serie-card" key={serie.id} onClick = {() => onSelect(serie)}>
               {serie.imagen ? (
                 <img src={serie.imagen} alt={serie.nombre} />
               ) : (

@@ -3,11 +3,14 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import SeriesList from "./components/SeriesList";
 import { searchSeries } from "./components/TvMazeAPI";
+import FavouriteButton from "./components/FavouriteButton";
+import Modal from "./components/Modal";
 
 export default function App() {
   const [busqueda, setBusqueda] = useState("");
   const [resultados, setResultados] = useState([]); 
   const [favoritos, setFavoritos] = useState([]);
+  const [serieSeleccionada, setSerieSeleccionada] = useState(null);
 
   useEffect(() => {
     const guardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
@@ -47,7 +50,11 @@ export default function App() {
 
       <p className = "search-text">Texto de búsqueda: {busqueda}</p>
 
-      <SeriesList resultados = {resultados} onToggle = {actualizarFavoritos} />
+      <SeriesList 
+        resultados = {resultados} 
+        onToggle = {actualizarFavoritos}
+        onSelect = {setSerieSeleccionada}
+      />
 
       <section className = "favoritos">
         <h2>Mis series favoritas</h2>
@@ -56,18 +63,20 @@ export default function App() {
         ) : (
           <div className = "series-grid">
             {favoritos.map((serie) => (
-              <div className = "series-card" key = {serie.id}>
+              <div className="serie-card" key={serie.id} onClick={() => setSerieSeleccionada(serie)}>
                 {serie.imagen ? (
                   <img src = {serie.imagen} alt = {serie.nombre} />
                 ) : (
                   <div className = "no-image">Sin imagen</div>
                 )}
                 <h3>{serie.nombre}</h3>
+                <FavouriteButton serie = {serie} onToggle={actualizarFavoritos} />
               </div>  
             ))}
           </div>
         )}
       </section>
+      <Modal serie={serieSeleccionada} onClose={() => setSerieSeleccionada(null)} />
     </div>
   )
 }
