@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
+import SeriesList from "./components/SeriesList";
 
 export default function App() {
   const [busqueda, setBusqueda] = useState("");
@@ -35,18 +36,7 @@ export default function App() {
 
       <p className = "search-text">Texto de búsqueda: {busqueda}</p>
 
-      <section className = "resultados">
-        <h2>Resultados</h2>
-        {resultados.length === 0 ? (
-          <p>No hay resultados</p>
-        ) : (
-          <ul>
-            {resultados.map((r) => (
-              <li key = {r.id}>{r.nombre}</li>
-            ))}
-          </ul>
-        )}
-      </section> 
+      <SeriesList resultados = {resultados} />
     </div>
   )
 }
