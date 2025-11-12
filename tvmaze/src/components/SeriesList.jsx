@@ -1,6 +1,6 @@
 import FavouriteButton from "./FavouriteButton";
 
-export default function SeriesList({ resultados }) {
+export default function SeriesList({ resultados, onToggle }) {
   function limpiarResumen(texto) {
     if (!texto) return "Sin descripción disponible";
     const sinEtiquetas = texto.replace(/<[^>]+>/g, "");
@@ -22,7 +22,7 @@ export default function SeriesList({ resultados }) {
                 <div className="no-image">Sin imagen</div>
               )}
               <h3>{serie.nombre}</h3>
-              <FavouriteButton serie = {serie} />
+              <FavouriteButton serie = {serie} onToggle = {onToggle} />
               <p>{limpiarResumen(serie.resumen)}</p>
             </div>
           ))}
