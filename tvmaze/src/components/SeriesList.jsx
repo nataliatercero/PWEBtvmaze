@@ -1,12 +1,6 @@
 import FavouriteButton from "./FavouriteButton";
 
-export default function SeriesList({ resultados, onToggle }) {
-  function limpiarResumen(texto) {
-    if (!texto) return "Sin descripción disponible";
-    const sinEtiquetas = texto.replace(/<[^>]+>/g, "");
-    return sinEtiquetas.length > 150 ? sinEtiquetas.slice(0, 150) + "..." : sinEtiquetas;
-  }
-
+export default function SeriesList({ resultados, onToggle, onSelect }) {
   return (
     <section className="resultados">
       <h2>Resultados</h2>
@@ -23,7 +17,6 @@ export default function SeriesList({ resultados, onToggle }) {
               )}
               <h3>{serie.nombre}</h3>
               <FavouriteButton serie = {serie} onToggle = {onToggle} />
-              <p>{limpiarResumen(serie.resumen)}</p>
             </div>
           ))}
         </div>

@@ -153,4 +153,84 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* simplifica top/left/right/bottom */
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.modal-content {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.2rem 1rem 1.5rem;
+  width: 85%;
+  max-width: 360px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  animation: modalFadeIn 0.25s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.modal-content h2 {
+  margin: 0.4rem 0 0.3rem;
+  font-size: 1.15rem;
+  color: #222;
+}
+
+.modal-content p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Botón de cierre */
+.close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #fff;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.3rem;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  z-index: 1100;
+}
+
+.close-btn:hover {
+  background: #0078ff;
+  color: #fff;
+  border-color: #0078ff;
+  transform: scale(1.05);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

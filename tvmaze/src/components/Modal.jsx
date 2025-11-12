@@ -1,5 +1,3 @@
-import { FaTimes } from "react-icons/fa";
-
 export default function Modal({ serie, onClose}) {
     function limpiarResumen(texto) {
         if (!texto) return "Sin descripción disponible";
@@ -13,8 +11,8 @@ export default function Modal({ serie, onClose}) {
         <div className = "modal-overlay" onClick = {onClose}>
             <div className = "modal-content" onClick = {(e) => e.stopPropagation()}>
                 <button className = "close-btn" onClick = {onClose}>
-                    <FaTimes />
-                </button>
+                    <span>&times;</span> 
+                </button> 
 
                 {serie.imagen ? (
                     <img src = {serie.imagen} alt = {serie.nombre} />
