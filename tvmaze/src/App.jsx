@@ -55,16 +55,15 @@ export default function App() {
           Favoritos    
         </button>
       </div>
+      
+
+      {!modoFavoritos ? (
+    <>
       <SearchBar
         busqueda = {busqueda}
         onChange = {handleChange}
         onSubmit = {handleSubmit}
       />
-
-      <p className = "search-text">Texto de búsqueda: {busqueda}</p>
-
-      {!modoFavoritos ? (
-    <>
       <p className="search-text">Texto de búsqueda: {busqueda}</p>
       <SeriesList
         resultados={resultados}
@@ -103,9 +102,7 @@ export default function App() {
                   <div className="no-image">Sin imagen</div>
                 )}
                 <h3>{serie.nombre}</h3>
-                <div onClick={(e) => e.stopPropagation()}>
-                  <FavouriteButton serie={serie} onToggle={actualizarFavoritos} />
-                </div>
+                <FavouriteButton serie={serie} onToggle={actualizarFavoritos} />
               </div>
             ))}
           </div>

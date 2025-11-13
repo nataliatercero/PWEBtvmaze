@@ -6,10 +6,11 @@ export default function FavouriteButton({ serie, onToggle}) {
     
     // useEffect para recordar los favoritos aunque recargue la página
     useEffect(() => {
-        const stored = JSON.parse(localStorage.getItem("favoritos")) || [];
-        const yaGuardada = stored.some((s) => s.id === serie.id);
-        setIsFavourite(yaGuardada);
-    }, [serie.id]);
+        const favs = localStorage.getItem("favoritos");
+        if (!favs) return;
+        setIsFavourite(JSON.parse(favs).some(s => s.id === serie.id));
+    }, []);
+
 
     const handleClick = () => {
         let guardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
@@ -27,7 +28,10 @@ export default function FavouriteButton({ serie, onToggle}) {
     }
 
     return (
-        <button className = "favorite-btn" onClick = {handleClick}>
+        <button className = "favorite-btn" onClick = {(e => {
+            e.stopPropagation();
+            handleClick();
+        })}>
             <FaHeart size = {20} color = {isFavourite ? "red" : "gray"} />
         </button>
     )
